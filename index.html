@@ -55,70 +55,45 @@ Edited by: Adrien Shepherd
 	    		});
 			});
 		</script>
-		<!----//End-top-nav-script---->
+<!----//End-top-nav-script---->
 </head>
 <body>
-		<!----start-container---->
-			<!----start-header---->
-		<div id="none" class="header scroll">
-			<div class="container">
-				<!----start-top-nav---->
-				 <nav class="top-nav">
-					<ul class="top-nav">
-						<li class="active"><a href="#home" class="scroll">Home</a></li>
-						<li class="page-scroll"><a href="#fea" class="scroll">Features</a></li>
-						<li class="page-scroll"><a href="#port" class="scroll">Portfolio</a></li>
-						<li class="page-scroll"><a href="#blog" class="scroll">Blog</a></li>
-						<li class="page-scroll"><a href="#test" class="scroll">Testimonials</a></li>
-						<li class="contatct-active" class="page-scroll"><a href="#contact" class="scroll">Contact</a></li>
-					</ul>
-					<a href="#" id="pull"><img src="images/nav-icon.png" title="menu" /></a>
-				</nav>
-				<div class="clearfix"> </div>
-				<div class="slide-text text-center">
-					<h1>High Quality Template</h1>
-					<span>Built with love.</span>
-					<a class="slide-btn" href="#">Learn More</a>
-				</div>
-				<!----//End-top-nav---->
+	<!----start-nav---->
+	<section id="header" class="profile-background">
+		<div class="container profile">
+			<div>
+				<img src="images/ProfilePic.jpg" class="profile-picture">
+			</div>
+			<div class="aboutme-background">
+				<h1 class="profile-name">Adrien Shepherd</h1>
+				<p class="aboutme-text">I'm an experienced Unreal engine programmer. I have a bachelors degree in video game programming. I am well versed in C++ and blueprints and I'm knoledgable in several areas of the engine, including but not limited to:
+					asset manager, multiplayer, core unreal classes, UI implementation, common UI classes, AI programming, material blueprints, animation blueprints, ability system component, enhanced input...
+				</p>
 			</div>
 		</div>
-		<!----//End-header---->
-		<!----start-feartures----->
-		<div id="home" class="features">
-			<div class="container">
-				<div class="head text-center">
-					<h3><span> </span> Our Features</h3>
-					<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. </p>
-				</div>
-				<!---- start-features-grids---->
-				<div class="features-grids text-center">
-					<div class="col-md-3 features-grid">
-						<span class="home-icon1"><a href="#port" class="scroll"><i class="fa fa-gamepad"> </i> </a> </span>
-						<h3><a href="#">Past/Current Projects</a></h3>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean.</p>
-					</div>
-					<div class="col-md-3 features-grid">
-						<span class="home-icon1"><i class="fa fa-thumbs-up"> </i> </span>
-						<h3><a href="#">Easy</a></h3>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean.</p>
-					</div>
-					<div class="col-md-3 features-grid">
-						<span class="home-icon1"><i class="fa fa-tachometer"> </i> </span>
-						<h3><a href="#">Fast</a></h3>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean.</p>
-					</div>
-					<div class="col-md-3 features-grid">
-						<span class="home-icon1"><i class="fa fa-mobile"> </i> </span>
-						<h3><a href="#">Responsive</a></h3>
-						<p>This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean.</p>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<!---- //End-features-grids---->
+
+		<div class="container-grid aboutme">
+			<!---- start-features-grids---->				
+			<div class="item1 features-grid">
+				<a href="#port" class="header-page" id="projects" onclick="openPage('projects')" onmouseenter="hoverTab('projects')" onmouseleave="unhoverTab('projects')"><img class="grid-icon-unhovered" src="images/projects.png"><img src="images/projects-hovered.png"></a>	
+				<h3 class="grid-text">Projects</h3>	
+			</div>					
+			<div class="item2 features-grid">
+				<a href="#port" class="header-page" id="education" onclick="openPage('education')" onmouseenter="hoverTab('education')" onmouseleave="unhoverTab('education')"><img src="images/graduation-hat2.png"><img src="images/graduation-hat2-hovered.png"></a>
+				<h3 class="grid-text">Education</h3>
+			</div>
+			<div class="item3 features-grid">
+				<a href="#port" class="header-page" id="skills" onclick="openPage('skills')" onmouseenter="hoverTab('skills')" onmouseleave="unhoverTab('skills')"><img src="images/skills2.png"><img src="images/skills2-hovered.png"></a>
+				<h3 class="grid-text">Skills</h3>
+			</div>
+			<div class="item4 features-grid">
+				<a href="#port" class="header-page" id="experience" onclick="openPage('experience')" onmouseenter="hoverTab('experience')" onmouseleave="unhoverTab('experience')"><img src="images/Experience2.png"><img src="images/Experience2-hovered.png"></a>
+				<h3 class="grid-text">Experience</h3>
 			</div>
 		</div>
-		<!----//End-feartures----->
+	</section>
+	<!----//End-nav---->
+
 		<!---- start-work---->
 		<div class="work">
 			<div class="container">
@@ -469,8 +444,12 @@ Edited by: Adrien Shepherd
 		<div class="footer">
 			<div class="container">
 				<div class="footer-left">
-					<a href="#"><img src="images/footer-logo.png" title="mabur" /></a>
-					<p>Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+					<p>Original template by <a href="http://w3layouts.com/">W3layouts</a>, mostly edited by Adrien Shepherd</p>
+					<p>Header image <a href="https://www.freepik.com/free-photo/smooth-wavy-blue-line-background_5083068.htm#query=blue%20wave&position=12&from_view=search&track=ais">by starline</a> on Freepik</p>
+					<p> Icons by <a href="https://www.freepik.com/icon/graduation-hat_999735#position=9&page=1&term=school&fromView=search">Freepik</a>, modified by Adrien Shepherd</p>
+					<p>About me text image by <a href="https://www.rawpixel.com">rawpixel</a></p>
+
+					
 				</div>
 				<script type="text/javascript">
 				$(document).ready(function() {
@@ -492,6 +471,8 @@ Edited by: Adrien Shepherd
 		</div>
 		<!----//End-footer---->
 		<!----//End-container---->
+
+		<script type="text/javascript" src="js/click-navtab.js"></script>
 	</body>
 </html>
 

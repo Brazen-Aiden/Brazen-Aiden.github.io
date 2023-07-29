@@ -1,4 +1,4 @@
-html, body{
+html, body{ 
     font-family: 'Open Sans', sans-serif;
     font-size: 100%;
     background-color: #FFF;
@@ -11,15 +11,50 @@ body a{
 	-ms-transition:0.5s all;
 }
 /*----start-header----*/
+.profile{
+	border: 0.5rem;
+	padding: 0.5rem;
+
+	gap: 3em;
+	justify-content: center;
+}
+
+.aboutme{
+	text-align: center;
+}
+
+.profile-background{
+	background: url(../images/headerbackground.jpg) no-repeat 100%;
+	background-size: cover;
+}
+
+.profile-picture{
+	border:2px solid #2ca7cc;
+}
+
+
+.profile-text{
+	flex-basis: 50%;
+}
+
+.profile-name{
+	text-align: left;
+	margin-top: 125px;
+	margin-left: 100px;
+	color: #000000;
+	font-size: medium;
+	font-weight:700;
+}
+
+/*----end-header----*/
+
+
 .header{
-	background:url(../images/header-bg.jpg) no-repeat 0px 0px;
-	background-size:100% 100%;
-	min-height:700px;
+	border:2px solid #394346;
+	text-align: center;
 }
-.logo{
-	float: left;
-	margin-top: 2.5em;
-}
+
+
 /*----navbar-nav----*/
 .top-nav ul li a{
 	color: #394346;
@@ -210,12 +245,11 @@ nav a#pull {
 	display:inline-block;
 	background:url(../images/arrow-icon.png)no-repeat 0px 0px;
 }
-.features-grid span{
-	height:140px;
-	width:140px;
+.header-page {
+	margin-bottom: 0px;
 	display:inline-block;
-	background:#F3F3F3;
-	border:10px solid #EBEBEB;
+	background:#c8f7fc;
+	border:10px solid #2ca7cc;
 	border-radius:30em;
 	-webkit-border-radius:30em;
 	-moz-border-radius:30em;
@@ -227,40 +261,51 @@ nav a#pull {
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 }
-.features-grid span i{
-	font-size: 3em;
-	color: #FD3B01;
-	margin-top: 0.8em;
+
+.features-grid a img{
+	margin-top: 2.0em;
 	transition:0.5s all;
 	-webkit-transition:0.5s all;
 	-moz-transition:0.5s all;
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 } 
-.features-grid h3 a{
-	color: #8E999C;
-	font-size: 1.1em;
-	font-weight: 600;
-}
-.features-grid h3 a:hover{
-	text-decoration:none;
-	color:#8E999C;
-}
-.features-grid p{
-	color: #8E999C;
-	font-size: 1em;
-	line-height: 1.5em;
-}
-.features-grid:hover span{
+
+.header-page:hover{
 	background:#FD3B01;
 	border-color:#FFDCD1;
 }
-.features-grid:hover i{
-	color: #FFF;
+
+.aboutme-background{
+	display: inline-block;
+	background: url(../images/aboutmebackground.png) no-repeat 100%;
+	background-size: contain;
+	height: 518.6px;
+	width: 703px;
 }
+
+.aboutme-text{
+	text-indent: 75px;
+	margin-left: 100px;
+	margin-right: 100px;
+	color: #000000;
+	font-size: medium;
+	font-weight:700;
+	line-height: 2em;
+}
+
+.grid-text{
+	
+	margin-top: 0px;
+	color: #2ca7cc;
+}
+
+
 .features-grids{
 	padding: 4em 0 0em;
 }
+
+
 /*---- start-work----*/
 .work{
 	background: #4F4F57;
@@ -995,9 +1040,7 @@ nav a#pull {
 .col-md-7, .head p{
 	width: 100%;
 }
-div.col-md-3.features-grid {
-   margin-bottom: 30px;
-}
+
 .center-work-grid {
 	margin-top: 3em;
 }
@@ -1127,16 +1170,7 @@ div.col-md-3.features-grid {
 .head p, .features-grid p, .contact-left p{
 	font-size: 0.85em;
 }
-.features-grid span, .work-grid span{
-	height: 120px;
-	width: 120px;
-}
-.features-grid span i {
-	margin-top: 0.6em;
-}
-.features-grid h3 a {
-	font-size: 0.95em;
-}
+
 .work, .features {
    padding: 3em 0;
 }
@@ -1248,9 +1282,7 @@ div.col-md-6.test-monial-time-line-left {
 .head h3, .contact-left h3 {
 	font-size: 1.2em;
 }
-.features-grid h3 a {
-	font-size: 0.85em;
-}
+
 .features-grid span, .work-grid span {
 	height: 100px;
 	width: 100px;
@@ -1261,9 +1293,8 @@ div.col-md-6.test-monial-time-line-left {
 .work-info p {
 	font-size: 0.8125em;
 }
-.features-grid span i {
-	margin-top: 0.4em;
-}
+
+
 .work, .features {
 	padding: 2em 0 0;
 }

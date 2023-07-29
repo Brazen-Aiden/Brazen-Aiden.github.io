@@ -13,6 +13,7 @@ html {
 body {
   margin: 0;
 }
+
 article,
 aside,
 details,
@@ -290,16 +291,6 @@ textarea {
 a {
   color: #1B242F;
   text-decoration: none;
-}
-a:hover,
-a:focus {
-  color: #E74C3C;
-  text-decoration: underline;
-}
-a:focus {
-  outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
 }
 figure {
   margin: 0;
@@ -733,27 +724,82 @@ pre code {
   max-height: 340px;
   overflow-y: scroll;
 }
+
+.container div{
+  padding-bottom: 0.5em;
+}
+
 .container {
+  display: flex;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
+
+.item1{
+  grid-column: 1;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item2{
+  grid-column: 2;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item3{
+  grid-column: 3;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item4{
+  grid-column: 4;
+  grid-row: 1;
+  column-width: 20em;
+}
+
+.container-grid {
+  display: grid;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+@media (max-width: 767px) {
+ 
+  .container-grid .item2{
+        grid-column: 1;
+        grid-row: 2;
+  }
+  .container-grid .item3{
+      grid-column: 1;
+      grid-row: 3;
+  }
+  .container-grid .item4{
+      grid-column: 1;
+      grid-row: 4;
+  }
+
+}
+
+
+
 @media (min-width: 768px) {
-  .container {
-    width: 750px;
+  .profile{
+    gap: 1rem;
   }
 }
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
+
+@media (max-width: 1200px){
+  .container { 
+    flex-wrap: wrap;  
+  }
+
+  .profile{
+    gap: 0;
   }
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
+
+
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
