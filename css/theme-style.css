@@ -12,14 +12,13 @@ body a{
 }
 /*----start-header----*/
 .profile{
-	border: 0.5rem;
-	padding: 0.5rem;
-
-	gap: 3em;
-	justify-content: center;
+	background-repeat: no-repeat;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .aboutme{
+	margin-top: 75px;
 	text-align: center;
 }
 
@@ -28,22 +27,26 @@ body a{
 	background-size: cover;
 }
 
+.profile-top-container{
+
+	display: grid;
+	width: 35%;
+}
+
+
 .profile-picture{
+	justify-self: center;
 	border:2px solid #2ca7cc;
+	width: 75%;
+
+	min-width: 250px;
 }
 
-
-.profile-text{
-	flex-basis: 50%;
-}
 
 .profile-name{
-	text-align: left;
-	margin-top: 125px;
-	margin-left: 100px;
+	text-align: center;
 	color: #000000;
-	font-size: medium;
-	font-weight:700;
+	font-weight:900;
 }
 
 /*----end-header----*/
@@ -276,21 +279,11 @@ nav a#pull {
 	border-color:#FFDCD1;
 }
 
-.aboutme-background{
-	display: inline-block;
-	background: url(../images/aboutmebackground.png) no-repeat 100%;
-	background-size: contain;
-	height: 518.6px;
-	width: 703px;
-}
-
 .aboutme-text{
 	text-indent: 75px;
-	margin-left: 100px;
-	margin-right: 100px;
+	margin-top: 25px;
 	color: #000000;
-	font-size: medium;
-	font-weight:700;
+	font-weight:550;
 	line-height: 2em;
 }
 
