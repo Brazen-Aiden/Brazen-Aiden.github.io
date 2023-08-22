@@ -105,6 +105,10 @@ main {
 	-ms-transition:0.5s all;
 } 
 
+.hovered-icon{
+	display: none;
+}
+
 .header-page:hover{
 	background:#FD3B01;
 	border-color:#FFDCD1;

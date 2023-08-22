@@ -62,22 +62,4 @@ function changeButton(tabID)
   }
   
 
-  //set initial defaults for header tabs
-  
-  var i, tabcolor, tabhovered, tabcolortriggered;
-  //Set default tab colors, fonts, and tab images
-  tabcolor = document.getElementsByClassName("header-page");
-  for (i = 0; i < tabcolor.length; i++) {
-      tabcolor[i].style.backgroundColor = "#c8f7fc";
-      tabcolor[i].style.borderColor = "#2ca7cc";
-      tabcolor[i].style.height = "140px";
-      tabcolor[i].style.width = "140px";
-      tabcolor[i].firstElementChild.style.display = "inline-block";
-      tabcolor[i].lastChild.style.display = "none";
-      tabcolor[i].nextElementSibling.style.color = "#2ca7cc";
-      tabcolor[i].nextElementSibling.style.fontSize  = "24px";
-
-      tabcolor[i].removeAttribute("tabPressed");
-  }
-
   changeButton('skills'); 
