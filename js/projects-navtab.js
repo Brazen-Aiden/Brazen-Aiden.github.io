@@ -7,8 +7,6 @@ function changeButton(tabID)
     for (i = 0; i < tabcolor.length; i++) {
         tabcolor[i].style.backgroundColor = "#c8f7fc";
         tabcolor[i].style.borderColor = "#2ca7cc";
-        tabcolor[i].style.height = "140px";
-        tabcolor[i].style.width = "140px";
         tabcolor[i].firstElementChild.style.display = "inline-block";
         tabcolor[i].lastChild.style.display = "none";
         tabcolor[i].nextElementSibling.style.color = "#2ca7cc";
@@ -52,8 +50,6 @@ function changeButton(tabID)
     {
       tabtriggered.style.backgroundColor = "#c8f7fc";
       tabtriggered.style.borderColor = "#2ca7cc";
-      tabtriggered.style.height = "140px";
-      tabtriggered.style.width = "140px";
       tabtriggered.firstElementChild.style.display = "inline-block";
       tabtriggered.lastChild.style.display = "none";
       tabtriggered.nextElementSibling.style.color = "#2ca7cc";
