@@ -1,0 +1,237 @@
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: #fff;
+}
+
+
+
+.item1{
+  grid-column: 1;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item2{
+  grid-column: 2;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item3{
+  grid-column: 3;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item4{
+  grid-column: 4;
+  grid-row: 1;
+  column-width: 20em;
+}
+.item5{
+  grid-column: 5;
+  grid-row: 1;
+  column-width: 20em;
+}
+
+.contact-details{
+  color: #000000;
+}
+
+@media (max-width: 767px) {
+ 
+  .container-grid .item2{
+        grid-column: 1;
+        grid-row: 2;
+  }
+  .container-grid .item3{
+      grid-column: 1;
+      grid-row: 3;
+  }
+  .container-grid .item4{
+      grid-column: 1;
+      grid-row: 4;
+  }
+  .container-grid .item5{
+    grid-column: 1;
+    grid-row: 5;
+}
+
+}
+
+@media (min-width: 0px)
+{
+  .up-arrow {
+
+    display: none;
+  }
+}
+
+@media (min-width: 320px){
+
+  .profile-top-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    max-width: 300px;
+  }
+
+  .contact-details{
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 20px;
+    padding-left: 25px;
+  }
+
+  .aboutme-text{
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 20px;
+  }
+
+  .profile{
+    background-image: none;
+  }
+}
+
+@media (min-width: 1200px){
+
+  .profile-top-container{
+    padding-left: 170px;
+    padding-top: 115px;
+    width: 35%;
+    max-width: 500px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .contact-details{
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 22px;
+    padding-left: 72.5px;
+    width: 620px;
+  }
+
+  .profile-name{
+    font-size: 22px;
+  }
+
+  .aboutme-text{
+    margin-left: 165px;
+    margin-right: 165px;
+    font-size: 20px;
+  }
+
+  .profile{
+    background-image: url(../images/aboutmebackground.png);
+    background-size: 1200px 712.9px;
+    height: 712.9px;
+	  width: 1200px;
+  }
+
+}
+
+
+@media (min-width: 1308.8px){
+
+  .profile-top-container{
+    padding-left: 185px;
+    padding-top: 125px;
+  }
+
+  .contact-details{
+    font-size: x-large;
+    padding-left: 72.5px;
+    width: 700px;
+  }
+
+  .aboutme-text{
+    margin-left: 180px;
+    margin-right: 180px;
+    font-size: 22.2px;
+  }
+
+  .profile-name{
+    font-size: x-large;
+  }
+
+  .profile{
+    background-size: 1308.8px 777.6px;
+    height: 777.6px;
+	  width: 1308.8px;
+  }
+}
+
+@media (min-width: 1417px){
+
+  .profile-top-container{
+    padding-left: 200px;
+    padding-top: 135px;
+  }
+
+  .contact-details{
+    font-size: x-large;
+    padding-left: 100px;
+    width: 775px;
+  }
+
+  .aboutme-text{
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .profile-name{
+    font-size: x-large;
+  }
+
+  .profile{
+    background-size: 1417px 841.88px;
+    height: 841.88px;
+	  width: 1417px;
+  }
+
+  .aboutme-text{
+    font-size: x-large;
+  }
+
+  .up-arrow {
+
+    display:inline;
+  }
+}
+
+
+@font-face {
+  font-family: 'Glyphicons Halflings';
+
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}

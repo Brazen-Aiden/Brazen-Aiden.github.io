@@ -1,0 +1,21 @@
+.transition-swipe{
+    transform: translateY(0);
+    transition: 500ms;
+}
+
+
+html.is-animating .transition-swipe{
+    transform: translateY(100px);
+}
+
+html.is-leaving .transition-swipe{
+    transform: translateY(0);
+}
+
+html.is-changing .transition-main {
+    transition: opacity 250ms ease-in-out;
+  }
+  
+  html.is-animating .transition-main {
+    opacity: 0;
+  }

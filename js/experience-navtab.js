@@ -1,4 +1,4 @@
-function openPage(tabID) 
+function changeButton(tabID) 
 {
     
     var i, tabcolor, tabhovered, tabcolortriggered;
@@ -24,7 +24,7 @@ function openPage(tabID)
     tabcolortriggered.firstElementChild.style.display = "none";
     tabcolortriggered.lastChild.style.display = "inline-block";
     tabcolortriggered.nextElementSibling.style.color = "#FD3B01";
-    tabcolortriggered.nextElementSibling.style.fontSize  = "1.8em";
+    tabcolortriggered.nextElementSibling.style.fontSize  = "1.6em";
     tabcolortriggered.setAttribute("tabPressed", "");
   }
 
@@ -38,7 +38,7 @@ function openPage(tabID)
     tabtriggered.firstElementChild.style.display = "none";
     tabtriggered.lastChild.style.display = "inline-block";
     tabtriggered.nextElementSibling.style.color = "#FD3B01";
-    tabtriggered.nextElementSibling.style.fontSize  = "1.8em";
+    tabtriggered.nextElementSibling.style.fontSize  = "1.6em";
   
   }
   
@@ -62,5 +62,22 @@ function openPage(tabID)
   }
   
 
-  //set default triggered tab colors, fonts, and tab images by clicking it right away
-  openPage("projects"); 
+  //set initial defaults for header tabs
+  
+  var i, tabcolor, tabhovered, tabcolortriggered;
+  //Set default tab colors, fonts, and tab images
+  tabcolor = document.getElementsByClassName("header-page");
+  for (i = 0; i < tabcolor.length; i++) {
+      tabcolor[i].style.backgroundColor = "#c8f7fc";
+      tabcolor[i].style.borderColor = "#2ca7cc";
+      tabcolor[i].style.height = "140px";
+      tabcolor[i].style.width = "140px";
+      tabcolor[i].firstElementChild.style.display = "inline-block";
+      tabcolor[i].lastChild.style.display = "none";
+      tabcolor[i].nextElementSibling.style.color = "#2ca7cc";
+      tabcolor[i].nextElementSibling.style.fontSize  = "24px";
+
+      tabcolor[i].removeAttribute("tabPressed");
+  }
+
+  changeButton('experience'); 
