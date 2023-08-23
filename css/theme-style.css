@@ -136,6 +136,15 @@ main {
 	color: #2ca7cc;
 }
 
+.leading-text{
+	font-weight: 1000;
+	font-style: normal;
+}
+
+.standard-text{
+	font-weight: 500;
+	font-style: italic;
+}
 
 .features-grid{
 	padding: 4em 0 0em;

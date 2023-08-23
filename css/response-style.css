@@ -121,6 +121,13 @@ body {
   }
 }
 
+@media (min-width: 767px){
+  .up-arrow {
+
+    display:inline;
+  }
+}
+
 @media (min-width: 1200px){
 
   .profile-top-container{
@@ -220,11 +227,6 @@ body {
 
   .aboutme-text{
     font-size: x-large;
-  }
-
-  .up-arrow {
-
-    display:inline;
   }
 }
 

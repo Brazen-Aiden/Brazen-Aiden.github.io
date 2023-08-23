@@ -55,8 +55,23 @@ Author: Adrien Shepherd
 		</section>
 
 		<main class="transition-main">
-			<h1>Projects</h1>
-			<p>Avengard</p>
+			<h1>2022 to Present</h1>
+
+			<div class="project-container" style="display: grid;">
+				<img class ="project-icon1" grid-column: 1; grid-row: 1;" src="images/AvengardLogo.png">
+				
+				<div class ="project1 standard-text">
+					<P><span class="leading-text">Game genre: </span> RPG MOBA hybrid</P>
+					<P><span class="leading-text">My role/responsiblities: </span> Lead Programmer, designing and implementing main code structure--game systems and plugins, 
+						supervise code of volunteer programmers, manage github, bug fixing, assist in other areas where needed...</P>
+					<P><span class="leading-text">Areas worked on: </span> Multiplayer, UI, AI, asset manager, gameplay, 
+						game core classes, database, specific game features such as stats or UI filter system, C++, blueprints...involved in almost all areas of the game development.</P>
+					<P><span class="leading-text">Version control methods:</span> Github, strong communication, good practices and precautions to avoid too many conflicts</P>
+					<P><span class="leading-text">Current state of game: </span> (Closed alpha) several core features complete, including but not limited to: 
+						simple jungle camps, minion AI, building mechanics, a small number of abilities, lobby hosting, character editor...</P>
+					<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://playavengard.com/">Avengard</a></P>
+				</div>
+			</div>
 		</main>
 
 		<script type="text/javascript" src="js/projects-navtab.js"></script>
@@ -73,9 +88,79 @@ Author: Adrien Shepherd
 				}
 			}
 
+			@media (min-width: 320px){
+
+				.project-icon1{
+					width: 175px;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: auto;
+					margin-bottom: auto;
+				}
+				.project-container{
+					padding-left: 0px;
+				}
+				.project1{
+					margin-left: 25px;
+					margin-right: 25px;
+					margin-top: 50px;
+					text-align: left;
+					grid-column: 1; 
+					grid-row: 2;
+					width: auto;
+				}
+			}
+			@media (min-width: 820px){
+
+				.project-icon1{
+					width: 275px;
+				}
+				.project-container{
+					padding-left: 50px;
+				}
+				.project1{
+					margin-top: 0px;
+					margin-right: 25px;
+					margin-left: 50px;
+					text-align: left;
+					grid-column: 2; 
+					grid-row: 1;
+				}
+				
+			}
+			@media (min-width: 1200px){
+				.project-icon1{
+					width: 300px;
+				}
+				.project-container{
+					padding-left: 100px;
+				}
+				.project1{
+					margin-right: 75px;
+				}
+			}
+
+			@media (min-width: 1308px){
+				.project-icon1{
+					width: 375px;
+				}
+				.project1{
+					margin-right: 100px;
+				}
+			}
+
+	
 			@media (min-width: 1417px){
 				.grid-text{
 					margin-bottom: 0px;
+				}
+
+				.project-icon1{
+					width: 400px;
+				}
+
+				.project1{
+					margin-right: 150px;
 				}
 			}
 		</style>

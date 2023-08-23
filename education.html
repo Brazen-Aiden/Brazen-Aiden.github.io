@@ -55,8 +55,16 @@ Author: Adrien Shepherd
 		</section>
 
 		<main class="transition-main">
-			<h1>Education</h1>
-			<p>College</p>
+			<h1>2020 to 2022</h1>
+			<div class="education-container" style="display: grid;">
+				<div class ="education1 standard-text">
+					<P><span class="leading-text">University: </span> Southern New Hampshire</P>
+					<P><span class="leading-text">Degree: </span> Bachelors</P>
+					<P><span class="leading-text">Name of Degree:</span> game programming and development</P>
+					<P style="font-style: normal;"><span class="leading-text">GPA: </span> 4.0</P>
+					<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://www.snhu.edu/">SNHU</a></P>
+				</div>
+			</div>
 		</main>
 
 		<script type="text/javascript" src="js/education-navtab.js"></script>
@@ -73,9 +81,56 @@ Author: Adrien Shepherd
 				}
 			}
 
+			@media (min-width: 320px){
+
+				.education-container{
+					padding-left: 25px;
+					padding-right: 25px;
+				}
+				.education1{
+					margin-left: auto;
+					margin-right: auto;
+					text-align: left;
+					width: auto;
+				}
+			}
+			@media (min-width: 820px){
+				.education-container{
+					padding-left: 50px;
+					padding-right: 0px;
+				}
+				.education1{
+					margin-top: 0px;
+					margin-right: 25px;
+					margin-left: 50px;
+					grid-column: 2; 
+					grid-row: 1;
+				}
+				
+			}
+			@media (min-width: 1200px){
+				.education-container{
+					padding-left: 100px;
+				}
+				.education1{
+					margin-right: 75px;
+				}
+			}
+
+			@media (min-width: 1308px){
+				.education1{
+					margin-right: 100px;
+				}
+			}
+
+	
 			@media (min-width: 1417px){
 				.grid-text{
 					margin-bottom: 0px;
+				}
+
+				.education1{
+					margin-right: 150px;
 				}
 			}
 		</style>
