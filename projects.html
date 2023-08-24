@@ -7,6 +7,9 @@ Author: Adrien Shepherd
 		<!-- jQuery library -->
 		<script src="js/jquery-3.7.0.min.js"></script>
 
+		<!-- navtab functions -->
+		<script type="text/javascript" src="js/navtab.js"></script>
+
         <title>Portfolio | Adrien Shepherd</title>
         <link href="css/response-style.css" rel='stylesheet' type='text/css'>
         <!-- Custom Theme files -->
@@ -21,6 +24,10 @@ Author: Adrien Shepherd
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
         <!----//webfonts---->
+
+		<script>
+			import { changeButton, hoverTab, unhoverTab } from 'js/navtab.js';
+		</script>
     </head>
 	<body>
 		<!----start-nav---->
@@ -32,7 +39,7 @@ Author: Adrien Shepherd
 					<h3 class="grid-text">Contact</h3>	
 				</div>						
 				<div class="item2 features-grid">
-					<a href="index.html" id="projects" class="header-page" onmouseenter="hoverTab('projects')" onmouseleave="unhoverTab('projects')"><img src="images/projects.png"><img class="hovered-icon" src="images/projects-hovered.png"></a>	
+					<a href="index.html" id="projects" class="header-page current-page" tabpressed onmouseenter="hoverTab('projects')" onmouseleave="unhoverTab('projects')"><img src="images/projects.png"><img class="hovered-icon" src="images/projects-hovered.png"></a>	
 					<h3 class="grid-text">Projects</h3>	
 					<span class="up-arrow" id = "projects-arrow"></span>
 				</div>					
@@ -73,8 +80,7 @@ Author: Adrien Shepherd
 				</div>
 			</div>
 		</main>
-
-		<script type="text/javascript" src="js/projects-navtab.js"></script>
+		
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
 		<script type="text/javascript">
 			var arrow = $("#projects-arrow");

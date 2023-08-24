@@ -79,6 +79,10 @@ main {
 	font-weight:900;
 }
 
+.hovered-icon{
+	display: none;
+}
+
 .header-page {
 	margin-bottom: 0px;
 	display:inline-block;
@@ -98,6 +102,21 @@ main {
 	width: 140px;
 }
 
+.current-page{
+	background-color: #FD3B01;
+  	border-color:  #FFDCD1;
+}
+.current-page img{
+	display: none;
+}
+.current-page .hovered-icon{
+	display: inline-block;
+}
+.current-page ~ h3{
+	color: #FD3B01;
+	font-size: 1.6em;
+}
+
 .features-grid a img{
 	margin-top: 2.0em;
 	transition:0.5s all;
@@ -106,15 +125,6 @@ main {
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 } 
-
-.hovered-icon{
-	display: none;
-}
-
-.header-page:hover{
-	background:#FD3B01;
-	border-color:#FFDCD1;
-}
 
 .aboutme-text{
 	text-indent: 75px;

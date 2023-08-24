@@ -7,6 +7,9 @@ Author: Adrien Shepherd
 		<!-- jQuery library -->
 		<script src="js/jquery-3.7.0.min.js"></script>
 
+		<!-- navtab functions -->
+		<script type="text/javascript" src="js/navtab.js"></script>
+
         <title>Portfolio | Adrien Shepherd</title>
         <link href="css/response-style.css" rel='stylesheet' type='text/css'>
         <!-- Custom Theme files -->
@@ -21,6 +24,10 @@ Author: Adrien Shepherd
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
         <!----//webfonts---->
+
+		<script>
+			import { changeButton, hoverTab, unhoverTab } from 'js/navtab.js';
+		</script>
     </head>
 	<body>
 		<!----start-nav---->
@@ -37,7 +44,7 @@ Author: Adrien Shepherd
 					<span class="up-arrow" id = "projects-arrow"></span>
 				</div>					
 				<div class="item3 features-grid">
-					<a href="index.html" class="header-page" id="education" onmouseenter="hoverTab('education')" onmouseleave="unhoverTab('education')"><img src="images/graduation-hat.png"><img class="hovered-icon" src="images/graduation-hat-hovered.png"></a>
+					<a href="index.html" class="header-page current-page" tabpressed id="education" onmouseenter="hoverTab('education')" onmouseleave="unhoverTab('education')"><img src="images/graduation-hat.png"><img class="hovered-icon" src="images/graduation-hat-hovered.png"></a>
 					<h3 class="grid-text">Education</h3>
 					<span class="up-arrow" id = "education-arrow"></span>
 				</div>
@@ -59,15 +66,13 @@ Author: Adrien Shepherd
 			<div class="education-container" style="display: grid;">
 				<div class ="education1 standard-text">
 					<P><span class="leading-text">University: </span> Southern New Hampshire</P>
-					<P><span class="leading-text">Degree: </span> Bachelors</P>
-					<P><span class="leading-text">Name of Degree:</span> game programming and development</P>
+					<P><span class="leading-text">Degree: </span> Bachelors in game programming and development</P>
 					<P style="font-style: normal;"><span class="leading-text">GPA: </span> 4.0</P>
 					<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://www.snhu.edu/">SNHU</a></P>
 				</div>
 			</div>
 		</main>
 
-		<script type="text/javascript" src="js/education-navtab.js"></script>
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
 		<script type="text/javascript">
 			var arrow = $("#education-arrow");

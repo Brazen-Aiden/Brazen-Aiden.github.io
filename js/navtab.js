@@ -71,4 +71,3 @@ function unhoverTab(tabID)
 }
   
 
-changeButton('contact'); 

@@ -7,6 +7,9 @@ Author: Adrien Shepherd
 		<!-- jQuery library -->
 		<script src="js/jquery-3.7.0.min.js"></script>
 
+		<!-- navtab functions -->
+		<script type="text/javascript" src="js/navtab.js"></script>
+
         <title>Portfolio | Adrien Shepherd</title>
         <link href="css/response-style.css" rel='stylesheet' type='text/css'>
         <!-- Custom Theme files -->
@@ -21,6 +24,10 @@ Author: Adrien Shepherd
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
         <!----//webfonts---->
+
+		<script>
+			import { changeButton, hoverTab, unhoverTab } from 'js/navtab.js';
+		</script>
     </head>
 	<body>
 		<!----start-nav---->
@@ -47,7 +54,7 @@ Author: Adrien Shepherd
 					<span class="up-arrow" id = "skills-arrow"></span>
 				</div>
 				<div class="item5 features-grid">
-					<a href="index.html" class="header-page" id="experience" onmouseenter="hoverTab('experience')" onmouseleave="unhoverTab('experience')"><img src="images/Experience.png"><img class="hovered-icon" src="images/Experience-hovered.png"></a>
+					<a href="index.html" class="header-page current-page" tabpressed id="experience" onmouseenter="hoverTab('experience')" onmouseleave="unhoverTab('experience')"><img src="images/Experience.png"><img class="hovered-icon" src="images/Experience-hovered.png"></a>
 					<h3 class="grid-text">Experience</h3>
 					<span class="up-arrow" id = "experience-arrow"></span>
 				</div>
@@ -59,7 +66,6 @@ Author: Adrien Shepherd
 			<p>Avengard</p>
 		</main>
 
-		<script type="text/javascript" src="js/experience-navtab.js"></script>
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
 		<script type="text/javascript">
 			var arrow = $("#experience-arrow");

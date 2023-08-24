@@ -5,7 +5,10 @@ Author: Adrien Shepherd
 <html lang="en">
 	<head>
 		<!-- jQuery library -->
-		<script src="js/jquery-3.7.0.min.js"></script>
+		<script type="text/javascript" src="js/jquery-3.7.0.min.js"></script>
+		
+		<!-- navtab functions -->
+		<script type="text/javascript" src="js/navtab.js"></script>
 
         <title>Portfolio | Adrien Shepherd</title>
         <link href="css/response-style.css" rel='stylesheet' type='text/css'>
@@ -50,7 +53,7 @@ Author: Adrien Shepherd
 			<div class="container-grid aboutme">
 				<!---- start-features-grid---->	
 				<div class="item1 features-grid">
-					<a class="header-page" id="contact" onmouseenter="hoverTab('contact')" onmouseleave="unhoverTab('contact')"><img src="images/contact.png"><img class="hovered-icon" src="images/contact-hovered.png"></a>	
+					<a class="header-page current-page" tabpressed id="contact" onmouseenter="hoverTab('contact')" onmouseleave="unhoverTab('contact')"><img src="images/contact.png"><img class="hovered-icon" src="images/contact-hovered.png"></a>	
 					<h3 class="grid-text">Contact</h3>	
 				</div>					
 				<div class="item2 features-grid">
@@ -83,7 +86,8 @@ Author: Adrien Shepherd
 		<!----//End-footer---->
 		<!----//End-container---->
 
-		<script type="text/javascript" src="js/index-navtab.js"></script>
+		
+		
 		<script type="text/javascript" src="js/animations-index.js"></script>
 		<style>
 			.grid-text{
