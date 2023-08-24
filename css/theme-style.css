@@ -102,6 +102,10 @@ main {
 	width: 140px;
 }
 
+.header-page ~ h3 {
+	font-size: 24px;
+}
+
 .current-page{
 	background-color: #FD3B01;
   	border-color:  #FFDCD1;
