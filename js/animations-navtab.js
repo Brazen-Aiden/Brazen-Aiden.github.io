@@ -9,7 +9,16 @@ mainH1.animate({opacity: '0.5'}, "slow");
 
 var main = $(".transition-main");
 
-main.animate({top: '75px', width: '80%', opacity: '1'}, 750);
+var currentWidth = $(window).width();
+
+if(currentWidth < 990)
+{
+    main.animate({top: '75px', width: '100%', opacity: '1'}, 750);
+}
+else
+{
+    main.animate({top: '75px', width: '90%', opacity: '1'}, 750);
+}
 
 
 mainP.animate({opacity: '1'}, "fast");

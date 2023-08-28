@@ -4,6 +4,9 @@ Author: Adrien Shepherd
 <!DOCTYPE HTML>
 <html lang="en">
     <head>
+		<!-- Experience specific JS-->
+		<script type="text/javascript" src="js/experience-info.js"></script>
+
 		<!-- jQuery library -->
 		<script src="js/jquery-3.7.0.min.js"></script>
 
@@ -14,6 +17,9 @@ Author: Adrien Shepherd
         <link href="css/response-style.css" rel='stylesheet' type='text/css'>
         <!-- Custom Theme files -->
         <link href="css/theme-style.css" rel='stylesheet' type='text/css' />
+
+		<script type="text/javascript" src="js/prism.js"></script>
+		<link href="css/prism.css" rel='stylesheet' type='text/css' />
         <!-- Custom Theme files -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,9 +31,63 @@ Author: Adrien Shepherd
         <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700' rel='stylesheet' type='text/css'>
         <!----//webfonts---->
 
-		<script>
-			import { changeButton, hoverTab, unhoverTab } from 'js/navtab.js';
-		</script>
+		<style>
+			.popup {
+			  position: relative;
+			  display: inline-block;
+			  cursor: pointer;
+			  -webkit-user-select: none;
+			  -moz-user-select: none;
+			  -ms-user-select: none;
+			  user-select: none;
+			}
+			
+			/* The actual popup */
+			.popup .popuptext {
+			  visibility: hidden;
+			  width: 160px;
+			  background-color: #555;
+			  color: #fff;
+			  text-align: center;
+			  border-radius: 6px;
+			  padding: 8px 0;
+			  position: absolute;
+			  z-index: 1;
+			  bottom: 75px;
+			  left: 50%;
+			  margin-left: -80px;
+			}
+			
+			/* Popup arrow */
+			.popup .popuptext::after {
+			  content: "";
+			  position: absolute;
+			  top: 100%;
+			  left: 50%;
+			  margin-left: -5px;
+			  border-width: 5px;
+			  border-style: solid;
+			  border-color: #555 transparent transparent transparent;
+			}
+			
+			/* Toggle this class - hide and show the popup */
+			.popup .show {
+			  visibility: visible;
+			  -webkit-animation: fadeIn 1s;
+			  animation: fadeIn 1s;
+			}
+			
+			/* Add animation (fade in the popup) */
+			@-webkit-keyframes fadeIn {
+			  from {opacity: 0;} 
+			  to {opacity: 1;}
+			}
+			
+			@keyframes fadeIn {
+			  from {opacity: 0;}
+			  to {opacity:1 ;}
+			}
+		</style>
     </head>
 	<body>
 		<!----start-nav---->
@@ -62,8 +122,151 @@ Author: Adrien Shepherd
 		</section>
 
 		<main class="transition-main">
-			<h1>Experience</h1>
-			<p>Avengard</p>
+			<div class="experience-header" onclick="openCloseInfo('experience1')" onmouseenter="hoverInfo('info1', 'Poptext1')" onmouseleave="unhoverInfo('info1', 'Poptext1')"><h2 class="info1">Ability Component System</h1>
+				<div class = "popup">
+					<span class="popuptext" id="Poptext1">
+						Click to open/close!
+					</span>
+				</div>
+			</div>
+			<div class="experience-container experience1">
+				<div class="overview">
+					<h3 style="text-align: center;">Overview</h3>
+					<P >➼ Firm understanding of how gameplay tags control execution of abilities</P>
+					<P >➼ Advanced understanding of the source code for Unreal's ability system component</P>
+				</div>
+
+				<pre class ="code-example">
+					<code  class ="language-CPP">
+if(PlayerHeroASComponent) //The ability system component
+{
+	
+	//Check if ability is ultimate and if that ability level is 3
+	if(GetAbilityTreeType(InInputSlot).MatchesTag(TAG_UI_Filter_UltimateAbility) &&
+		GetAbilitySlotLevel(InInputSlot) == 3)
+	{
+		FString TagToAdd = "Blocked.";
+
+		//Add our ability name dynamically
+		TagToAdd.Append(GetAbilityClassName(InInputSlot));
+
+		PlayerHeroASComponent->RemoveLooseGameplayTag(
+			FGameplayTag::RequestGameplayTag(FName(TagToAdd))); 
+	}
+
+	const FGameplayAbilitySpec* AbilitySpec =
+		PlayerHeroASComponent->FindAbilitySpecFromHandle(AbilitySlotSpecHandles[InInputSlot -1]);
+
+	TArray<UGameplayAbility*> GameplayAbilityInstances = AbilitySpec->GetAbilityInstances();
+
+	//This will always be one, because we will never have multiple of this ability and we already know 
+	//the ability exists
+	if (GameplayAbilityInstances.Num() == 1)
+	{
+		//Looping through each value we want to retrieve to edit
+		//Each path can have one or more values per a tree path, EX: Path 1 affects cooldown and damage
+		// while path 2 only affects ability range
+		for (int32 Index = 0; Index < GetPathArrayNum(InInputSlot, GetChosenPath(InInputSlot)); Index++)
+		{
+			UE_LOG(LogAven, Log, TEXT("Applied value %f to ability %s"),
+				GetCurrentDesiredValueOfSlot(InInputSlot, Index), *GameplayAbilityInstances[0]->GetName());
+
+			if(UHeroGameplayAbility* HeroGameplayAbility = Cast<UHeroGameplayAbility>(
+				GameplayAbilityInstances[0]))
+			{
+				HeroGameplayAbility->ApplyTreePathExecution(
+					GetCurrentDesiredValueOfSlot(InInputSlot, Index), GetChosenPath(InInputSlot),
+					InInputSlot, Index, this);
+			}
+		}
+	}
+}
+					</code>
+				</pre>
+				<div class ="experience">
+					<P > In this example I'm modifying an instance of an ability every time I add points to that ability.
+						From the top I'm dynamically removing a tag which was added dynamically when we initialized the ultimate ability. 
+						The ability settings are set to block that specific ability if the tag is active on the player's ability system component. 
+						Next I'm pulling from ability specs which I stored when the abilities were given. The if statement regarding the ability instance 
+						will never be more or less than 1, so that statement is for readability and clarity only. The for loop is there for editing multiple values within a tree path.
+						The abilities in this game have two paths in which each path modifies the ability in some way. I designed the structure to be flexible and accommodate any number of changes. 
+					</P>
+				</div>
+			</div>
+
+			<div class="experience-header" onclick="openCloseInfo('experience2')" onmouseenter="hoverInfo('info2', 'Poptext2')" onmouseleave="unhoverInfo('info2', 'Poptext2')"><h2 class="info2">Asset Manager</h1>
+				<div class = "popup">
+					<span class="popuptext" id="Poptext2">
+						Click to open/close!
+					</span>
+				</div>
+			</div>
+			<div class="experience-container experience2">
+				<div class="overview">
+					<h3 style="text-align: center;">Overview</h3>
+					<P >➼ Understanding of how loading and unloading can be used to decrease Ram needed.</P>
+					<P >➼ Experience creating system that tracks how many of each asset is in game, which allows game to unload data when we know no player is using it.</P>
+				</div>
+		
+				<pre class ="code-example">
+					<code  class ="language-CPP">
+void UAvenAssetManager::LoadCharacterData(const FString& InUniquePlayerID,const FCharacterData& InCharacterData, 
+const FStreamableDelegate& LoadFinishedDelegateToCall, bool bLoadingFromPIE)
+{
+	TArray<FPrimaryAssetId> DataAssetsToLoad;
+
+		//Retrieve all the assets we need to load for this character
+		GetRelevantCharacterDataAssetIDs(InCharacterData, DataAssetsToLoad);
+		
+		if(bLoadingFromPIE)
+		{
+			const UAbilityDataLibrary* AbilityDL = AbilityDataLibrary;
+			const UEquipmentTypeDataLibrary* EquipmentTypeDL = EquipmentTypeDataLibrary;
+		
+			bool bHaveAllAssets = EquipmentTypeDL && AbilityDL;
+		
+			if(bHaveAllAssets)
+			{
+				DataAssetsToLoad.Append(AbilityDL->Library);
+				DataAssetsToLoad.Append(EquipmentTypeDL->GetAllTypesToLoad());
+			}
+	
+			TArray<FName> Bundles;
+			Bundles.Add(FName("Full"));
+			Bundles.Add(FName("Info"));
+		
+			//Load character data assets and assign them a handle that can be used to access them
+			//Allows us to cancel or check progress
+			TSharedPtr<FStreamableHandle> LoadingHandle = LoadPrimaryAssets(DataAssetsToLoad, Bundles,
+				LoadFinishedDelegateToCall, FStreamableManager::AsyncLoadHighPriority);
+	
+			//Keep track of how many assets of this type we have for each player and store handle
+			PlayerLoadedAssetData.ReplaceOrAddPlayerLoadData(InUniquePlayerID, DataAssetsToLoad, LoadingHandle);
+	
+			return;
+		}
+	
+		//Add assets we need for this character
+		TArray<FName> BundlesToAdd;
+		BundlesToAdd.Add(FName("Full"));
+		
+		TSharedPtr<FStreamableHandle> LoadingHandle = ChangeBundleStateForPrimaryAssets(DataAssetsToLoad, BundlesToAdd,
+			TArray<FName>(), false, LoadFinishedDelegateToCall);
+	
+		//Keep track of how many assets of this type we have for each player and store handle
+		PlayerLoadedAssetData.ReplaceOrAddPlayerLoadData(InUniquePlayerID, DataAssetsToLoad, LoadingHandle);
+}
+					</code>
+				</pre>
+				<div class ="experience">
+					<P > In the example above I've separated data from data assets into two categories: Full and Info. Info is information only, and Full is everything else.
+						 I created a struct that holds player data and counts the number of other plays who share the same asset. This is done to accurately remove assets when 
+						 they are no longer being used.
+					</P>
+				</div>
+			</div>
+
+
 		</main>
 
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
@@ -79,10 +282,110 @@ Author: Adrien Shepherd
 				}
 			}
 
+			@media (min-width: 320px){
+
+				.code-example{
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: auto;
+					margin-bottom: auto;
+					padding-left: 25px;
+					padding-right: 25px;
+				}
+				.experience{
+					line-height: 2em;
+					margin-left: 25px;
+					margin-right: 25px;
+					margin-top: 50px;
+					text-align: left;
+				}
+				.overview{
+					max-width: 280px;
+				}
+			}
+
+			@media (min-width: 800px){
+
+				.overview{
+					max-width: 750px;
+				}
+			}
+
+			
+			@media (min-width: 1200px){
+		
+				.experience{
+					margin-left: 50px;
+					margin-right: 50px;
+				}
+				.overview{
+					max-width: 950px;
+				}
+			}
+
+			
+			@media (min-width: 1220px){
+				.code-example{
+					padding-left: 50px;
+					padding-right: 0px;
+				}
+			}
+
+			@media (min-width: 1308px){
+				
+			}
+
+			@media (min-width: 1340px){
+				.code-example{
+					padding-left: 100px;
+				}
+			}
+	
 			@media (min-width: 1417px){
 				.grid-text{
 					margin-bottom: 0px;
 				}
+
+				.experience-container{
+					max-width: 1250PX;
+			
+				}
+
+			}
+
+			@media (min-width: 1467px){
+				.code-example{
+					
+					padding-left: 150px;
+				}
+			}
+
+			.experience-container{
+				font-weight: 600;
+				margin-right: auto;
+				margin-left: auto;
+				display: none;
+			}
+
+			.code-example{
+				width: auto;
+				height: 500px;
+				background-color: aliceblue;
+				display: flex;
+				margin-right: auto;
+				margin-left: auto;
+				text-align: left;
+				overflow: auto;
+			}
+
+			.experience-header{
+				color: #2ca7cc;
+			}
+			.overview{
+				margin-left: auto;
+				margin-right: auto;
+				text-align: left;
+				margin-bottom: 50px;
 			}
 		</style>
 	</body>
