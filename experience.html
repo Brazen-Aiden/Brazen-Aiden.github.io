@@ -122,7 +122,7 @@ Author: Adrien Shepherd
 		</section>
 
 		<main class="transition-main">
-			<div class="experience-header" onclick="openCloseInfo('experience1')" onmouseenter="hoverInfo('info1', 'Poptext1')" onmouseleave="unhoverInfo('info1', 'Poptext1')"><h2 class="info1">Ability Component System</h1>
+			<div class="experience-header" onclick="openCloseInfo('experience1')" onmouseenter="hoverInfo('info1', 'Poptext1')" onmouseleave="unhoverInfo('info1', 'Poptext1')"><h2 class="info1">Ability System Component</h2>
 				<div class = "popup">
 					<span class="popuptext" id="Poptext1">
 						Click to open/close!
@@ -194,7 +194,7 @@ if(PlayerHeroASComponent) //The ability system component
 				</div>
 			</div>
 
-			<div class="experience-header" onclick="openCloseInfo('experience2')" onmouseenter="hoverInfo('info2', 'Poptext2')" onmouseleave="unhoverInfo('info2', 'Poptext2')"><h2 class="info2">Asset Manager</h1>
+			<div class="experience-header" onclick="openCloseInfo('experience2')" onmouseenter="hoverInfo('info2', 'Poptext2')" onmouseleave="unhoverInfo('info2', 'Poptext2')"><h2 class="info2">Asset Manager</h2>
 				<div class = "popup">
 					<span class="popuptext" id="Poptext2">
 						Click to open/close!
@@ -266,7 +266,298 @@ const FStreamableDelegate& LoadFinishedDelegateToCall, bool bLoadingFromPIE)
 				</div>
 			</div>
 
+		<div class="experience-header" onclick="openCloseInfo('experience3')" onmouseenter="hoverInfo('info3', 'Poptext3')" onmouseleave="unhoverInfo('info3', 'Poptext3')"><h2 class="info3">Multiplayer</h2>
+			<div class = "popup">
+				<span class="popuptext" id="Poptext3">
+					Click to open/close!
+				</span>
+			</div>
+		</div>
+		<div class="experience-container experience3">
+			<div class="overview">
+				<h3 style="text-align: center;">Overview</h3>
+				<P >➼ Experience creating complex multiplayer code. </P>
+				<P >➼ Advanced understanding of multiplayer classes & how multiplayer works in Unreal engine.</P>
+			</div>
+			<Pre class ="code-example">
+				<code class ="language-CPP">
+void ACharLobbyController::SetCharMeshForPlayerState(AAvenLobbyPlayerState* InPS)
+{
+	if(InPS == nullptr || !IsLocalController())
+	{
+		return;
+	}
 
+	//Find and store pointers to the spawner for each team
+	if (!TeamOnePawnSpawner || !TeamTwoPawnSpawner)
+	{
+		UWorld* World = GetWorld();
+
+		for (TActorIterator<ALobbyPawnSpawner> It(World); It; ++It)
+		{
+			ALobbyPawnSpawner* CharLocations = *It;
+
+			if (CharLocations)
+			{
+				if(CharLocations->GetTeamID() == 1)
+				{
+					TeamOnePawnSpawner = CharLocations;
+
+					TeamOnePawnSpawner->SpawnMeshComponents();
+				}
+				else if (CharLocations->GetTeamID() == 2)
+				{
+					TeamTwoPawnSpawner = CharLocations;
+					
+					TeamTwoPawnSpawner->SpawnMeshComponents();
+				}
+
+				if (TeamOnePawnSpawner && TeamTwoPawnSpawner)
+				{
+					break;
+				}
+			}
+		}
+	}
+
+	//Depending on whether we local or remote assign each of the character meshes to each player
+	//Each mesh is handled locally and only information on characters are replicated
+	//This information is used to set up the mesh, local owning player will always control center mesh
+	if(InPS->GetLocalCharMesh() == nullptr)
+	{
+		if(InPS->GetGenericTeamId().GetId() == 1)
+		{
+			if(TeamOnePawnSpawner)
+			{
+				if(InPS->GetPlayerController() && InPS->GetPlayerController()->IsLocalController())
+				{
+					ACharLobbyMesh* LocalMesh = nullptr;
+					
+					if(TeamOnePawnSpawner->PlayerCharMeshByIndex(0))
+					{
+						LocalMesh = Cast<ACharLobbyMesh>(TeamOnePawnSpawner->PlayerCharMeshByIndex(0)->GetChildActor());
+					}
+
+					if(LocalMesh)
+					{
+						if(!LocalMesh->GetIsTaken())
+						{
+							InPS->SetLocalCharMesh(LocalMesh);
+
+							LocalMesh->SetIsTaken(true);
+
+							LocalMesh->SetOriginalStartingLocation(TeamOnePawnSpawner->GetCapsuleByIndex(0)->GetComponentLocation());
+					
+						}
+					}
+				}
+				else
+				{
+					ACharLobbyMesh* Mesh = nullptr;
+					
+					if(TeamOnePawnSpawner->PlayerCharMeshByIndex(TeamOneIndexCount))
+					{
+						Mesh = Cast<ACharLobbyMesh>(TeamOnePawnSpawner->PlayerCharMeshByIndex(TeamOneIndexCount)->GetChildActor());
+					}
+					
+					if(Mesh)
+					{
+						if(!Mesh->GetIsTaken())
+						{
+							InPS->SetLocalCharMesh(Mesh);
+
+							Mesh->SetIsTaken(true);
+
+							Mesh->SetOriginalStartingLocation(TeamOnePawnSpawner->GetCapsuleByIndex(TeamOneIndexCount)->GetComponentLocation());
+			
+							TeamOneIndexCount += 1;
+						}
+					}
+				}
+			}
+		}
+		else if (InPS->GetGenericTeamId().GetId() == 2)
+		{
+			if(TeamTwoPawnSpawner)
+			{
+				if(InPS->GetPlayerController() && InPS->GetPlayerController()->IsLocalController())
+				{
+					ACharLobbyMesh* LocalMesh = nullptr;
+					
+					if(TeamOnePawnSpawner->PlayerCharMeshByIndex(0))
+					{
+						LocalMesh = Cast<ACharLobbyMesh>(TeamTwoPawnSpawner->PlayerCharMeshByIndex(0)->GetChildActor());
+					}
+					
+					if(LocalMesh)
+					{
+						if(!LocalMesh->GetIsTaken())
+						{
+							InPS->SetLocalCharMesh(LocalMesh);
+
+							LocalMesh->SetIsTaken(true);
+
+							LocalMesh->SetOriginalStartingLocation(TeamTwoPawnSpawner->GetCapsuleByIndex(0)->GetComponentLocation());
+					
+						}
+					}
+				}
+				else
+				{
+					ACharLobbyMesh* Mesh = nullptr;
+					
+					if(TeamOnePawnSpawner->PlayerCharMeshByIndex(TeamTwoIndexCount))
+					{
+						Mesh = Cast<ACharLobbyMesh>(TeamTwoPawnSpawner->PlayerCharMeshByIndex(TeamTwoIndexCount)->GetChildActor());
+					}
+					
+					if(Mesh)
+					{
+						if(!Mesh->GetIsTaken())
+						{
+							InPS->SetLocalCharMesh(Mesh);
+	
+							Mesh->SetIsTaken(true);
+
+							Mesh->SetOriginalStartingLocation(TeamTwoPawnSpawner->GetCapsuleByIndex(TeamTwoIndexCount)->GetComponentLocation());
+				
+							TeamTwoIndexCount += 1;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+				</code>
+			</Pre>
+			<div class ="experience">
+				<P > This function is being fired on both server and clients. This game is currently using a listen server for testing multiplayer. Because a listen server also plays the game we are running this code on server as well.
+					 Two things to note with this code: It replicates as little as possible. The code itself is only being ran locally, but it is using replicated player character information to set up the mesh.
+					  Since the mesh exists on both server and client, the client can spawn and process the mesh locally using replicated player data. This allows us to be more flexible with the meshes, such as changing what player's mesh is spawned where.
+					  Because GetPlayerController does not exist on remote clients, and only exists on owning client and server, we know that the else will be triggered for everything remote players. IsLocalController ensures that regardless if player server or not,
+					  the controller we're accessing has to be local. This means that even though server has access to controller the remote host will trigger the else statement. Since we want owning clients to select and use the mesh at the center we default center mesh to index 0.
+				</P>
+			</div>
+		</div>
+
+		<div class="experience-header" onclick="openCloseInfo('experience4')" onmouseenter="hoverInfo('info4', 'Poptext4')" onmouseleave="unhoverInfo('info4', 'Poptext4')"><h2 class="info4">AI</h2>
+			<div class = "popup">
+				<span class="popuptext" id="Poptext4">
+					Click to open/close!
+				</span>
+			</div>
+		</div>
+<div class="experience-container experience4">
+			<div class="overview">
+				<h3 style="text-align: center;">Overview</h3>
+				<P >➼ Experience behvior tree, blackboard, and other AI related classes and settings.</P>
+				<P >➼ Experience creating more complex AI behaviors, including but not limited to: AI movement on spline, switching tasks based on input, and chasing enemy limits.</P>
+			</div>
+			<Pre class ="code-example">
+				<code class ="language-CPP">
+void AMinionAIControllerBase::SetMoveToLocation()
+{
+	const int32 SplineEnd = SplineActor->GetSpline()->GetNumberOfSplinePoints()  - 1;
+
+	if (!bIsStartingAtEndOfSpline)
+	{
+		if (CurrentSplinePoint == SplineActor->GetSpline()->GetNumberOfSplinePoints() - 3)
+		{	//If we're on the last overlap just make location end of spline
+			MoveLocation = SplineActor->GetSpline()->GetLocationAtSplinePoint(SplineEnd, ESplineCoordinateSpace::World);
+		}
+		else
+		{
+			const float FirstPointDistance = SplineActor->GetSpline()->GetDistanceAlongSplineAtSplinePoint(NextSplinePoint);
+
+			const float SecondPointDistance = SplineActor->GetSpline()->GetDistanceAlongSplineAtSplinePoint(NextSplinePoint + 1);
+
+			const float MidPointOfSpline = (SecondPointDistance - FirstPointDistance) / 2;
+
+
+			const FVector FirstPointLoc = SplineActor->GetSpline()->GetLocationAtSplinePoint(NextSplinePoint, ESplineCoordinateSpace::World);
+
+			const FVector SecondPointLoc = SplineActor->GetSpline()->GetLocationAtSplinePoint(NextSplinePoint + 1, ESplineCoordinateSpace::World);
+
+			const FVector Direction = (SecondPointLoc - FirstPointLoc).GetSafeNormal();
+
+
+			//We're adding the midpoint location to location where the spline is calculating it
+			//This gives us he mid point of the next overlap, taking it's size into consideration
+			MoveLocation = FirstPointLoc + (Direction * MidPointOfSpline);
+		}
+	}
+	else
+	{
+		if (CurrentSplinePoint == 1)
+		{	//If we're on the last overlap just make location end of spline
+			MoveLocation = SplineActor->GetSpline()->GetLocationAtSplinePoint(0, ESplineCoordinateSpace::World);
+		}
+		else
+		{
+			const float FirstPointDistance = SplineActor->GetSpline()->GetDistanceAlongSplineAtSplinePoint(NextSplinePoint);
+
+			const float SecondPointDistance = SplineActor->GetSpline()->GetDistanceAlongSplineAtSplinePoint(NextSplinePoint - 1);
+
+			const float MidPointOfSpline = (SecondPointDistance - FirstPointDistance) / 2;
+
+
+			const FVector FirstPointLoc = SplineActor->GetSpline()->GetLocationAtSplinePoint(NextSplinePoint, ESplineCoordinateSpace::World);
+
+			const FVector SecondPointLoc = SplineActor->GetSpline()->GetLocationAtSplinePoint(NextSplinePoint - 1, ESplineCoordinateSpace::World);
+
+			const FVector Direction = (SecondPointLoc - FirstPointLoc).GetSafeNormal();
+
+
+			//We're adding the midpoint location to location where the spline is calculating it
+			//This gives us he mid point of the next overlap, taking it's size into consideration
+			MoveLocation = FirstPointLoc + (Direction * MidPointOfSpline);
+		}
+	}
+}
+				</code>
+			</Pre>
+			<div class ="experience">
+				<P > Using math and a custom spline tool I created that links overlap boxes with splines, this code uses an overlap to generate a direction which is then fed to minion AI to tell them where they need to go.
+					 Because each overlap holds information on each spline point the minions are aware of where they are on the spline at all times. NextSplinePoint is fed into the minions each time the minion overlaps with the spline. 
+					 Though minions can switch between moving on spline, attacking player, other minions or buildings, the minion default behavior is to move on the spline and will return to spline when all other tasks are unavailable. 
+				</P>
+			</div>
+		</div>
+
+
+		<div class="experience-header" onclick="openCloseInfo('experience5')" onmouseenter="hoverInfo('info5', 'Poptext5')" onmouseleave="unhoverInfo('info5', 'Poptext5')"><h2 class="info5">Common UI</h2>
+			<div class = "popup">
+				<span class="popuptext" id="Poptext5">
+					Click to open/close!
+				</span>
+			</div>
+		</div>
+		<div class="experience-container experience5">
+			<div class="overview">
+				<h3 style="text-align: center;">Overview</h3>
+				<P >➼ Advanced understand of UI in Unreal engine, including knowledge of new Common UI classes. This UI uses a stack system to pop and push UI into layers.</P>
+				<P >➼ Experience with creating UI in both C++ and blueprints.</P>
+			</div>
+			<video width="100%" controls="controls" preload="none" onclick="this.play()">
+				<source src="Videos/CommonUI-Example.mp4" type=video/mp4>
+			</video>
+			<div class ="experience">
+				<P > Because of how complex this UI is I decided to do a short video instead of snipping a code piece. This is a complex I created for the character editor using many of the new common UI classes Epic created.
+					 I studied the Lyra project and copied over what I need and customized what needed to get customize. This UI uses gameplay tags to keep track of and add/ remove filters. I also did several other UI using 
+					 these new classes, so I have a very good understanding of how UI works in Unreal. 
+				</P>
+			</div>
+		</div>
+
+
+		<div class="experience-header" onclick="openCloseInfo('experience6')" onmouseenter="hoverInfo('info6', 'Poptext6')" onmouseleave="unhoverInfo('info6', 'Poptext6')"><h2 class="info6">Enhanced Input</h2>
+			<div class = "popup">
+				<span class="popuptext" id="Poptext6">
+					Click to open/close!
+				</span>
+			</div>
+		</div>
 		</main>
 
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
