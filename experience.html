@@ -558,6 +558,61 @@ void AMinionAIControllerBase::SetMoveToLocation()
 				</span>
 			</div>
 		</div>
+		<div class="experience-container experience6">
+			<div class="overview">
+				<h3 style="text-align: center;">Overview</h3>
+				<P >➼ Capable of implementing new enhanced input system as well as old input system.</P>
+				<P >➼ Experience using input system in various ways, including alongside ability system component (Thanks to Lyra project).</P>
+			</div>
+			<Pre class ="code-example">
+				<code class ="language-CPP">
+void APlayerHeroControllerBase::SetupInputComponent()
+{
+	Super::SetupInputComponent();
+	
+	if(UAvenEnhancedInputComponent* EnhancedInput = Cast<UAvenEnhancedInputComponent>(InputComponent))
+	{
+		EnhancedInput->BindNativeAction(InputConfig, TAG_MovementInput_Look_Mouse, ETriggerEvent::Triggered, this, &ThisClass::Input_LookMouse);
+		EnhancedInput->BindNativeAction(InputConfig, TAG_MovementInput_Look_Stick, ETriggerEvent::Triggered, this, &ThisClass::Input_LookStick);
+		EnhancedInput->BindNativeAction(InputConfig, TAG_UIInput_Game_Interact, ETriggerEvent::Triggered, this, &ThisClass::Input_Interact);
+	}
+}
+
+void APlayerHeroControllerBase::Input_Interact(const FInputActionValue& InputActionValue)
+{
+	if(ATeleportStatue* Teleporter = Cast<ATeleportStatue>(InteractedActor))
+	{
+		if(UTeleporterWidget* TeleporterWidget = Teleporter->GetTeleportWidget())
+		{
+			Teleporter->DeactivateTeleporterWidget();
+		}
+		else
+		{
+			Teleporter->ActivateTeleporterWidget(this);
+		}
+	}
+	else if(AShop* Shop = Cast<AShop>(InteractedActor))
+	{
+		if(UItemShopWidget* ShopWidget = Shop->GetShopWidget())
+		{
+			Shop->DeactivateShopWidget();
+		}
+		else
+		{
+			Shop->ActivateShopWidget(this);
+		}
+	}
+}			
+				</code>
+			</Pre>
+			<div class ="experience">
+				<P > After binding new input system to C++ interact function, I'm both activating and deactivating the widget based on whether the widget exists on that actor.
+					 Each of these actors stores a pointer to the widget when it is pushed onto the stack, and that pointer is removed when it is removed from the stack.
+					 The pointer to that actor is being stored whenever the player overlaps with that actor, so we're only able to influence the UI while we're within range of the actor.
+					 Other code also removes UI when player leaves overlap. This turns a simple button press into something more like a toggle for the UI.
+				</P>
+			</div>
+		</div>
 		</main>
 
 		<script type="text/javascript" src="js/animations-navtab.js"></script>
