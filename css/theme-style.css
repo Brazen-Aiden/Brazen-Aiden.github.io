@@ -3,7 +3,6 @@ html, body{
     font-size: 100%;
     background-color: #FFF;
 }
-
 main {
 	margin: 0em auto;
 	background:#FFDCD1;
@@ -12,47 +11,37 @@ main {
 	padding-top: 5px;
 	padding-bottom: 25px;
 }
-
 .transition-main{
 	width: 0%;
 	height: 100%;
 	position: relative;
 	opacity: 0;
-	top: -80;
+	top: -75;
 }
-
 .transition-main p{
 	opacity: 0;
 }
-
 .transition-main h1{
 	opacity: 0;
 }
-
-
 /*----start-profile----*/
 .profile{
 	background-repeat: no-repeat;
 	margin-right: auto;
 	margin-left: auto;
 }
-
 .aboutme{
 	text-align: center;
 }
-
 .profile-background{
 	background: url(../images/headerbackground.jpg) no-repeat 100%;
 	background-size: cover;
-	align-items: center;
 }
-
-.profile-top-container{
-
+.profile-container{
+	opacity: 0;
 	display: grid;
+	padding-top: 25px;
 }
-
-
 .profile-picture{
 	justify-self: center;
 	border:2px solid #2ca7cc;
@@ -60,7 +49,6 @@ main {
 
 	min-width: 250px;
 }
-
 .up-arrow {
 	width: 0; 
 	height: 0; 
@@ -68,21 +56,19 @@ main {
 	border-left: 70px solid transparent;
 	border-right: 70px solid transparent;
 	border-bottom: 80px solid #FFDCD1;
-
 	opacity: 0;
 }
-
-
 .profile-name{
+	font-size: x-large;
 	text-align: center;
 	color: #000000;
 	font-weight:900;
+	padding-top: 25px;
+	padding-bottom: 25px;
 }
-
 .hovered-icon{
 	display: none;
 }
-
 .header-page {
 	margin-bottom: 0px;
 	display:inline-block;
@@ -101,11 +87,12 @@ main {
 	height: 140px;
 	width: 140px;
 }
-
 .header-page ~ h3 {
 	font-size: 24px;
 }
-
+.Header-text{
+	
+}
 .current-page{
 	background-color: #FD3B01;
   	border-color:  #FFDCD1;
@@ -120,7 +107,6 @@ main {
 	color: #FD3B01;
 	font-size: 1.6em;
 }
-
 .features-grid a img{
 	margin-top: 2.0em;
 	transition:0.5s all;
@@ -129,7 +115,6 @@ main {
 	-o-transition:0.5s all;
 	-ms-transition:0.5s all;
 } 
-
 .aboutme-text{
 	text-indent: 75px;
 	margin-top: 0px;
@@ -138,28 +123,23 @@ main {
 	font-weight:550;
 	line-height: 2em;
 }
-
 .container-grid {
 	display: grid;
 	justify-content: center;
-  }
-
+}
 .grid-text{
 	
 	margin-top: 0px;
 	color: #2ca7cc;
 }
-
 .leading-text{
 	font-weight: 1000;
 	font-style: normal;
 }
-
 .standard-text{
 	font-weight: 500;
 	font-style: italic;
 }
-
 .features-grid{
 	padding: 4em 0 0em;
 }
