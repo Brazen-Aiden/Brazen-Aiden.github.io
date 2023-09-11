@@ -97,20 +97,30 @@ Author: Adrien Shepherd
 		<main class="transition-main">
 
 			<h2>Current Projects</h2>
-			<h3>2022 to Present</h3>
-			<div class="project-container" style="display: grid;">
-				<img class ="project-icon1" grid-column: 1; grid-row: 1;" src="images/AvengardLogo.png">
-				
-				<div class ="project standard-text">
-					<P><span class="leading-text">Game genre: </span> RPG MOBA hybrid</P>
-					<P><span class="leading-text">My role/responsibilities: </span> Lead Programmer, designing and implementing main code structure--game systems and plugins, 
-						supervise code of volunteer programmers, manage github, bug fixing, assist in other areas where needed...</P>
-					<P><span class="leading-text">Areas worked on: </span> Multiplayer, UI, AI, asset manager, gameplay, 
-						game core classes, database, specific game features such as stats or UI filter system, C++, blueprints...involved in almost all areas of the game development.</P>
-					<P><span class="leading-text">Version control methods:</span> Github, strong communication, good practices and precautions to avoid too many conflicts</P>
-					<P><span class="leading-text">Current state of game: </span> (Closed alpha) several core features complete, including but not limited to: 
-						simple jungle camps, minion AI, building mechanics, a small number of abilities, lobby hosting, character editor...</P>
-					<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://playavengard.com/">Avengard</a></P>
+
+			<div class="experience-header" onclick="openCloseInfo('experience0')" onmouseenter="hoverInfo('info0', 'Poptext0')" onmouseleave="unhoverInfo('info0', 'Poptext0')"><h2 class="info0">Avengard</h2>
+				<div class = "popup">
+					<span class="popuptext" id="Poptext0">
+						Click to open/close!
+					</span>
+				</div>
+			</div>
+			<div class="experience-container experience0">
+				<h3>2022 to Present</h3>
+				<div class="project-container" style="display: grid;">
+					<img class ="project-icon1" grid-column: 1; grid-row: 1;" src="images/AvengardLogo.png">
+					
+					<div class ="project standard-text">
+						<P><span class="leading-text">Game genre: </span> RPG MOBA hybrid</P>
+						<P><span class="leading-text">My role/responsibilities: </span> Lead Programmer, designing and implementing main code structure--game systems and plugins, 
+							supervise code of volunteer programmers, manage github, bug fixing, assist in other areas where needed...</P>
+						<P><span class="leading-text">Areas worked on: </span> Multiplayer, UI, AI, asset manager, gameplay, 
+							game core classes, database, specific game features such as stats or UI filter system, C++, blueprints...involved in almost all areas of the game development.</P>
+						<P><span class="leading-text">Version control methods:</span> Github, strong communication, good practices and precautions to avoid too many conflicts</P>
+						<P><span class="leading-text">Current state of game: </span> (Closed alpha) several core features complete, including but not limited to: 
+							simple jungle camps, minion AI, building mechanics, a small number of abilities, lobby hosting, character editor...</P>
+						<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://playavengard.com/">Avengard</a></P>
+					</div>
 				</div>
 			</div>
 		
@@ -609,13 +619,21 @@ void APlayerHeroControllerBase::Input_Interact(const FInputActionValue& InputAct
 			</div>
 
 			<h2>Education</h2>
-			<h3>2020 to 2022</h3>
-			<div class="education-container" style="display: grid;">
-				<div class ="education1 standard-text">
-					<P><span class="leading-text">University: </span> Southern New Hampshire</P>
-					<P><span class="leading-text">Degree: </span> Bachelors in game programming and development</P>
-					<P style="font-style: normal;"><span class="leading-text">GPA: </span> 4.0</P>
-					<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://www.snhu.edu/">SNHU</a></P>
+			<div class="experience-header" onclick="openCloseInfo('experience7')" onmouseenter="hoverInfo('info7', 'Poptext7')" onmouseleave="unhoverInfo('info7', 'Poptext7')"><h2 class="info7">Bachelors in Game Programming and Development</h2>
+				<div class = "popup">
+					<span class="popuptext" id="Poptext7">
+						Click to open/close!
+					</span>
+				</div>
+			</div>
+			<div class="experience-container experience7">
+				<h3>2020 to 2022</h3>
+				<div class="education-container" style="display: grid;">
+					<div class ="education1 standard-text">
+						<P><span class="leading-text">University: </span> Southern New Hampshire</P>
+						<P style="font-style: normal;"><span class="leading-text">GPA: </span> 4.0</P>
+						<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://www.snhu.edu/">SNHU</a></P>
+					</div>
 				</div>
 			</div>
 		</main>
