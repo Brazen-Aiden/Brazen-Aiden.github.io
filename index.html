@@ -114,7 +114,7 @@ Author: Adrien Shepherd
 						<P><span class="leading-text">Game genre: </span> RPG MOBA hybrid</P>
 						<P><span class="leading-text">My role/responsibilities: </span> Lead Programmer, designing and implementing main code structure--game systems and plugins, 
 							supervise code of volunteer programmers, manage github, bug fixing, assist in other areas where needed...</P>
-						<P><span class="leading-text">Areas worked on: </span> Multiplayer, UI, AI, asset manager, gameplay, 
+						<P><span class="leading-text">Areas worked on: </span> Over 90 % of the game was solo developted by me. Multiplayer, UI, AI, asset manager, gameplay, 
 							game core classes, database, specific game features such as stats or UI filter system, C++, blueprints...involved in almost all areas of the game development.</P>
 						<P><span class="leading-text">Version control methods:</span> Github, strong communication, good practices and precautions to avoid too many conflicts</P>
 						<P><span class="leading-text">Current state of game: </span> (Closed alpha) several core features complete, including but not limited to: 
@@ -122,7 +122,124 @@ Author: Adrien Shepherd
 						<P><span class="leading-text">Website: </span><a style="font-style: normal;" href="https://playavengard.com/">Avengard</a></P>
 					</div>
 				</div>
+
+				<br> 
+				<br> 
+
+				<div class="overview">
+					<h3 style="text-align: center;">Editor</h3>
+					<P >➼ Implemented ground work for integrating Lyra UI system</P>
+					<P >➼ Did most of the programming for UI in editor</P>
+					<P >➼ Programmed all systems, such as stats, filter, etc</P>
+					<P >➼ System even extends to armor, which also affect stats.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/AvengardEditor.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Host, join, and lobby</h3>
+					<P >➼ Implemented listen server hosting, join and search</P>
+					<P >➼ Implemented the UI for it as well, and programmed team switching</P>
+					<P >➼ Lobby is programmed locally and only takes in replicated player data to fill character mesh. This allows each player to locally have their character 
+						at the front and center, while populating the rest with other players.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/HostJoinMatchandLobby.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">In game shop</h3>
+					<P >➼ Implemented the system code the UI relies on. This includes slots and changing slots, item cooldowns, etc.</P>
+					<P >➼ Programmed several items, with two types almost fully implemented, runes with active effects and potions with timed effects or instant potions.</P>
+					<P >➼ Items use gameplay ability system to implement effects.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/AvengardInGameShop.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Stat and level up system</h3>
+					<P >➼ Implemented Stat and level up system, as well and complex tree path system for abilities.</P>
+					<P >➼ Abilities are programmed to change based on tree path selected. </P>
+					<P >➼ All systems and UI use new input system and is changed dynamically depending other inputs.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/Levelupsystem.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Teleporters</h3>
+					<P >➼ Implemented building teleporters</P>
+					<P >➼ Modified store assets for effects and implemented them in ability system.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/AvengardTeleporters.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Basic attack</h3>
+					<P >➼ Implemented basic attack and special abilities for four weapons.</P>
+					<P >➼ Basic attack and abilities uses gameplay ability tags to block certain actions and abilities. This includes blocking attack while jumping using the ability system.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/Basicattackandjump.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Building and character collision avoidance</h3>
+					<P >➼ Implemented Custom code that checks a location for blocking volumes to teleport the player to.</P>
+					<P >➼ programmed code that teleports player immediately before making collision complete, thus preventing collision issues with buildings that are spawning in.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/TownSpawnbuildingdirection.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Gameplay part 1</h3>
+					<P >➼ Implemented all abilities using gameplay ability system.</P>
+					<P >➼ Implemented tower queue system and targeting.</P>
+					<P >➼ Implemented Minion AI and spline path movement for minions, as well as targeting and focus behaviors.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/Gameplaypart1.mp4" type=video/mp4>
+				</video>
+
+				<br> 
+				<br>
+
+				<div class="overview">
+					<h3 style="text-align: center;">Gameplay part 2</h3>
+					<P >➼ Implemented the system code the UI relies on. This includes slots and changing slots, item cooldowns, etc.</P>
+					<P >➼ Implemented all building effects such as healing, and the added defenses you get (Orange glow effect) That comes from another building.</P>
+					<P >➼ Implemented custom collisions for minions and players based on team. Allied minions don't collide and enemy players can push around enemy minions.</P>
+				</div>
+				<video width="100%" controls="controls" preload="none" onclick="this.play()">
+					<source src="Videos/Gameplaypart2.mp4" type=video/mp4>
+				</video>
 			</div>
+
 		
 			<h2 class="Header-text">Code Examples and videos</h2>
 
